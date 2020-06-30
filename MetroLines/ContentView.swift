@@ -6,10 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
+    
+    @ObservedObject var missionsViewModel = MissionsViewModel()
+    
     var body: some View {
-        Text("Hello, world!").padding()
+        NavigationView {
+            List {
+                ForEach(self.missionsViewModel.results, id: \.self) {
+                    Text("\($0)")
+                }
+            }.listStyle(InsetGroupedListStyle())
+        }
     }
 }
 
