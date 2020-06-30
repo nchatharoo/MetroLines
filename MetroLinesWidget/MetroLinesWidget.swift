@@ -18,6 +18,7 @@ struct MissionTimeLine: TimelineProvider {
     typealias Entry = LastMissionEntry
     @State var cancellables: AnyCancellable? = nil
     
+    
     public func snapshot(with context: Context, completion: @escaping (LastMissionEntry) -> ()) {
         let fakeMission = ["Hey", "Bonjour"]
         let entry = LastMissionEntry(date: Date(), mission: fakeMission)
@@ -27,7 +28,7 @@ struct MissionTimeLine: TimelineProvider {
     public func timeline(with context: Context, completion: @escaping (Timeline<LastMissionEntry>) -> ()) {
         let currentDate = Date()
         let refreshDate = Calendar.current.date(byAdding: .minute, value: 1, to: currentDate)!
-        var  mission: [String]
+        var mission = [String]()
         
         cancellables = MissionLoader.fetch()
             .sink(receiveCompletion: { completion in
