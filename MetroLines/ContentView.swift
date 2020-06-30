@@ -16,9 +16,21 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(self.missionsViewModel.results, id: \.self) {
-                    Text("\($0)")
+                    ContentRow(result: $0)
                 }
             }.listStyle(InsetGroupedListStyle())
+        }
+    }
+}
+
+struct ContentRow : View {
+    var result: String
+    @Environment(\.imageCache) var cache: ImageCache
+    
+    var body: some View {
+        HStack {
+            Image("m13")
+            Text(result)
         }
     }
 }
