@@ -58,7 +58,7 @@ struct MetroLinesWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider(), placeholder: PlaceholderView()) { entry in
             MetroLinesWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Metro Lines")
+        .description("Montre les prochaines arrivées du métro")
     }
 }
