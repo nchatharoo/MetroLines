@@ -17,6 +17,10 @@
 		8E05638824AB9E2B003706E0 /* MetroLinesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E05638724AB9E2B003706E0 /* MetroLinesWidget.swift */; };
 		8E05638A24AB9E31003706E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E05638924AB9E31003706E0 /* Assets.xcassets */; };
 		8E05638E24AB9E31003706E0 /* MetroLinesWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8E05638024AB9E2B003706E0 /* MetroLinesWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8E36A3D924ABD34300B1B68C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E05637524AB82F7003706E0 /* APIService.swift */; };
+		8E36A3DA24ABD34600B1B68C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E05637424AB82F7003706E0 /* APIError.swift */; };
+		8E36A3DC24ABDCD300B1B68C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36A3DB24ABDCD300B1B68C /* Extension.swift */; };
+		8E36A3DD24ABDCDC00B1B68C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E36A3DB24ABDCD300B1B68C /* Extension.swift */; };
 		8EFD608724AB35DB005A1F79 /* MetroLinesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFD608624AB35DB005A1F79 /* MetroLinesApp.swift */; };
 		8EFD608924AB35DB005A1F79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFD608824AB35DB005A1F79 /* ContentView.swift */; };
 		8EFD608B24AB35E2005A1F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EFD608A24AB35E2005A1F79 /* Assets.xcassets */; };
@@ -75,6 +79,7 @@
 		8E05638724AB9E2B003706E0 /* MetroLinesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroLinesWidget.swift; sourceTree = "<group>"; };
 		8E05638924AB9E31003706E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E05638B24AB9E31003706E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E36A3DB24ABDCD300B1B68C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8EFD608324AB35DB005A1F79 /* MetroLines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetroLines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFD608624AB35DB005A1F79 /* MetroLinesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroLinesApp.swift; sourceTree = "<group>"; };
 		8EFD608824AB35DB005A1F79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -198,6 +203,7 @@
 				8EFD608624AB35DB005A1F79 /* MetroLinesApp.swift */,
 				8EFD608824AB35DB005A1F79 /* ContentView.swift */,
 				8E05637A24AB98BE003706E0 /* MissionsViewModel.swift */,
+				8E36A3DB24ABDCD300B1B68C /* Extension.swift */,
 				8EFD608A24AB35E2005A1F79 /* Assets.xcassets */,
 				8EFD608F24AB35E2005A1F79 /* Info.plist */,
 				8E05636F24AB82F7003706E0 /* Backend */,
@@ -392,7 +398,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E36A3D924ABD34300B1B68C /* APIService.swift in Sources */,
 				8E05638824AB9E2B003706E0 /* MetroLinesWidget.swift in Sources */,
+				8E36A3DA24ABD34600B1B68C /* APIError.swift in Sources */,
+				8E36A3DD24ABDCDC00B1B68C /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +416,7 @@
 				8E05637824AB82F7003706E0 /* APIError.swift in Sources */,
 				8E05637924AB82F7003706E0 /* APIService.swift in Sources */,
 				8E05637624AB82F7003706E0 /* ImageLoader.swift in Sources */,
+				8E36A3DC24ABDCD300B1B68C /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

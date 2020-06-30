@@ -7,46 +7,88 @@
 
 import WidgetKit
 import SwiftUI
+import Combine
 
-struct Provider: TimelineProvider {
-    public typealias Entry = SimpleEntry
+struct LastMissionEntry: TimelineEntry {
+    public let date: Date
+    public let mission: [String]
+}
 
-    public func snapshot(with context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
+struct MissionTimeLine: TimelineProvider {
+    typealias Entry = LastMissionEntry
+    @State var cancellables: AnyCancellable? = nil
+    
+    public func snapshot(with context: Context, completion: @escaping (LastMissionEntry) -> ()) {
+        let fakeMission = ["Hey", "Bonjour"]
+        let entry = LastMissionEntry(date: Date(), mission: fakeMission)
         completion(entry)
     }
-
-    public func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+    
+    public func timeline(with context: Context, completion: @escaping (Timeline<LastMissionEntry>) -> ()) {
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 1, to: currentDate)!
+        var  mission: [String]
+        
+        cancellables = MissionLoader.fetch()
+            .sink(receiveCompletion: { completion in
+                if case .failure(let apiError) = completion {
+                    print(apiError)
+                }
+            }, receiveValue: { (model: [String]) in
+                print(model)
+                mission = model
+            })
+        let entry = LastMissionEntry(date: currentDate, mission: mission)
+        let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
         completion(timeline)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
-    public let date: Date
-}
-
-struct PlaceholderView : View {
-    var body: some View {
-        Text("Placeholder View")
+struct MissionLoader {
+    static func fetch() -> AnyPublisher<[String], APIError> {
+        URLSession.shared.dataTaskPublisher(for: APIService.BASE_URL)
+            .tryMap({ result in
+                guard let urlResponse = result.response as? HTTPURLResponse, (200...299).contains(urlResponse.statusCode) else {
+                    throw APIError.unknown
+                }
+                return try! JSONDecoder().decode([String].self, from: result.data)
+            })
+            .receive(on: RunLoop.main)
+            .mapError { APIError.parseError(reason: $0.localizedDescription) }
+            .eraseToAnyPublisher()
     }
 }
 
-struct MetroLinesWidgetEntryView : View {
-    var entry: Provider.Entry
-
+struct PlaceholderView: View {
     var body: some View {
-        Text(entry.date, style: .time)
+        Text("Loading...")
+    }
+}
+
+struct MissionWidgetView: View {
+    let entry: LastMissionEntry
+    
+    var body: some View {
+        List {
+            ForEach(entry.mission, id: \.self) {
+                MissionRow(result: $0)
+            }
+        }
+        .background(Color.offWhite)
+        .neumorphicShadowBlack(radius: 10)
+        .neumorphicShadowWhite(radius: 10)
+        .listStyle(InsetGroupedListStyle())
+    }
+}
+
+struct MissionRow : View {
+    var result: String
+    
+    var body: some View {
+        HStack {
+            Image("m13")
+            Text(result)
+        }
     }
 }
 
@@ -55,8 +97,8 @@ struct MetroLinesWidget: Widget {
     private let kind: String = "MetroLinesWidget"
 
     public var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider(), placeholder: PlaceholderView()) { entry in
-            MetroLinesWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: MissionTimeLine(), placeholder: PlaceholderView()) { entry in
+            MissionWidgetView(entry: entry)
         }
         .configurationDisplayName("Metro Lines")
         .description("Montre les prochaines arrivées du métro")
