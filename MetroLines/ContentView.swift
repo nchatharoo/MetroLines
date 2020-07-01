@@ -18,7 +18,11 @@ struct ContentView: View {
                 ForEach(self.missionsViewModel.results, id: \.self) {
                     ContentRow(result: $0)
                 }
-            }.listStyle(InsetGroupedListStyle())
+            }
+            .background(Color.offWhite)
+            .neumorphicShadowBlack(radius: 10)
+            .neumorphicShadowWhite(radius: 10)
+            .listStyle(InsetGroupedListStyle())
         }
     }
 }

@@ -80,6 +80,8 @@
 		8E05638924AB9E31003706E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E05638B24AB9E31003706E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E36A3DB24ABDCD300B1B68C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8E981FB824AC7DFB00AB6DE1 /* MetroLinesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetroLinesWidgetExtension.entitlements; sourceTree = "<group>"; };
+		8E981FB924AC7E3500AB6DE1 /* MetroLines.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetroLines.entitlements; sourceTree = "<group>"; };
 		8EFD608324AB35DB005A1F79 /* MetroLines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetroLines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EFD608624AB35DB005A1F79 /* MetroLinesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroLinesApp.swift; sourceTree = "<group>"; };
 		8EFD608824AB35DB005A1F79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		8EFD607A24AB35DB005A1F79 = {
 			isa = PBXGroup;
 			children = (
+				8E981FB824AC7DFB00AB6DE1 /* MetroLinesWidgetExtension.entitlements */,
 				8EFD608524AB35DB005A1F79 /* MetroLines */,
 				8EFD609724AB35E2005A1F79 /* MetroLinesTests */,
 				8EFD60A224AB35E3005A1F79 /* MetroLinesUITests */,
@@ -200,6 +203,7 @@
 		8EFD608524AB35DB005A1F79 /* MetroLines */ = {
 			isa = PBXGroup;
 			children = (
+				8E981FB924AC7E3500AB6DE1 /* MetroLines.entitlements */,
 				8EFD608624AB35DB005A1F79 /* MetroLinesApp.swift */,
 				8EFD608824AB35DB005A1F79 /* ContentView.swift */,
 				8E05637A24AB98BE003706E0 /* MissionsViewModel.swift */,
@@ -462,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = MetroLinesWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9CD4D4F5T;
 				INFOPLIST_FILE = MetroLinesWidget/Info.plist;
@@ -473,6 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nchatharoo.MetroLines.MetroLinesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -483,6 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = MetroLinesWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P9CD4D4F5T;
 				INFOPLIST_FILE = MetroLinesWidget/Info.plist;
@@ -494,6 +501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nchatharoo.MetroLines.MetroLinesWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -621,6 +629,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MetroLines/MetroLines.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MetroLines/Preview Content\"";
 				DEVELOPMENT_TEAM = P9CD4D4F5T;
@@ -633,6 +642,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nchatharoo.MetroLines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -644,6 +654,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MetroLines/MetroLines.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MetroLines/Preview Content\"";
 				DEVELOPMENT_TEAM = P9CD4D4F5T;
@@ -656,6 +667,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nchatharoo.MetroLines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
